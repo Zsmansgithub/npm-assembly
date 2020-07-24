@@ -1,21 +1,11 @@
-# table-clipboard
-
-> A Vue.js project
-
-## Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+import tableClip 之后mixin到组件中
+// 绑定处理函数(操作触发区域)
+<div @mousedown.left="clickDown"
+ ref="clipTableContent"
+  @mouseup.left="clickUp"
+   @contextmenu.prevent="showMenu"
+   >
+   <table ref="clipTableContent"></table>
+</div>
+// 初始化传入操作区域node节点即可
+this.clipInit(this.$refs['clipTableContent']);
