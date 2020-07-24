@@ -1,2 +1,2 @@
-import * as tableClip from "./components/mixins";
+import * as tableClip from "../lib/copy/mixins";
 export default tableClip
