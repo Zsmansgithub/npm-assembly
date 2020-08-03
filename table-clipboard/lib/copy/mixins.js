@@ -1,5 +1,8 @@
 import Vue from 'vue/dist/vue.esm.js';
 import menus from './menus';
+import VueClipboard from 'vue-clipboard2'
+
+Vue.use(VueClipboard)
 import './style.css'
 export default {
     data () {
