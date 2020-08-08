@@ -48,6 +48,18 @@ export default {
             this.instance._props.isShow = false;
             const startX = $event.pageX;
             const startY = $event.pageY;
+            Array.from(this.clipContent.querySelectorAll('td.checkClips')).map((ov) => {
+                ov.classList.remove('checkClips');
+            });
+            let $el = $event.target
+            while($el && ($el.nodeName !== 'TD' || $el.nodeName !== 'TABLE')){
+                if($el.nodeName === 'TD') {
+                    $el.classList.add('checkClips');
+                    $el = undefined
+                } else {
+                    $el = $el.parentNode
+                }
+            }
             const td = Array.from(this.clipContent.querySelectorAll('td'));
             this.clipContent.onmousemove = ($event) => {
                 [rangeStartX, rangeSEndX] = [startX, $event.pageX].sort((a, b) => { return a - b; });
@@ -61,7 +73,7 @@ export default {
                     const isinnerY = (rangeStartY < tdItemT && tdItemT < rangeEndY) || (rangeStartY < tdItemB && tdItemB < rangeEndY);// td上下边Y轴坐标是否在滑动起始点Y轴坐标内
                     const level = (tdItemL < rangeStartX && rangeStartX < tdItemR) || (tdItemL < rangeSEndX && rangeSEndX < tdItemR); // 滑动起始点X轴坐标是否在td左右边X轴坐标内
                     const vertical = (tdItemT < rangeStartY && rangeStartY < tdItemB) || (tdItemT < rangeEndY && rangeEndY < tdItemB); // 滑动起始点Y轴坐标是否在td上下边Y轴坐标内
-                    if ((isinnerX && isinnerY) || (vertical && isinnerX) || (level && isinnerY)) {
+                    if ((isinnerX && isinnerY) || (vertical && isinnerX) || (level && isinnerY) || (level && vertical)) {
                         v.classList.add('checkClips');
                     } else {
                         v.classList.remove('checkClips');
@@ -98,9 +110,6 @@ export default {
         },
         showMenu ($event) {
             let left = $event.pageX;
-            console.log(window.pageXOffset);
-            console.log(window.innerWidth);
-            console.log($event.pageX);
             if (window.innerWidth + window.pageXOffset - left < 60) {
                 left = left - 54;
             }

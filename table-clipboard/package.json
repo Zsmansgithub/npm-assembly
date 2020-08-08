@@ -1,7 +1,7 @@
 {
   "name": "table-clipboard",
-  "version": "1.0.0",
-  "description": "A Vue.js mixin",
+  "version": "0.2.1",
+  "description": "A Vue.js mixin to clip table data to clipboard",
   "author": "yzy24926@163.com",
   "private": false,
   "scripts": {
