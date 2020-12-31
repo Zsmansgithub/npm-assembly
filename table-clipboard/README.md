@@ -1,3 +1,5 @@
+vue组件用于选中复制表格区域文本至剪切板
+vue用法
 import tableClip 之后mixin到组件中
 // 绑定处理函数(操作触发区域)
 <div @mousedown.left="clickDown"
